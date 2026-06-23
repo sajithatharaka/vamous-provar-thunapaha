@@ -1,9 +1,19 @@
 // src/app/layout.jsx
-import { Inter } from "next/font/google";
+import { Lora, Outfit } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "../../config";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  display: "swap",
+});
 
 export const metadata = {
   title: `${siteConfig.brand.name} — ${siteConfig.brand.tagline}`,
@@ -12,8 +22,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${outfit.variable} ${lora.variable}`}>
+      <body style={{ fontFamily: "var(--font-outfit), sans-serif", margin: 0 }}>
+        {children}
+      </body>
     </html>
   );
 }
