@@ -40,6 +40,7 @@ This is a project to capture clients for vamos provar thunapaha cooking experien
 - A hook should expose a small, intention-revealing API.
 
 Anti-Patterns - Avoid the following:
+
 - Type-based top-level structure only, such as one giant components/, hooks/, and services/ tree for the whole app, once the app becomes large.
 - Massive reusable components with too many flags.
 - Repeated useEffect fetching logic across pages.
@@ -52,17 +53,20 @@ Duplication control
 Only extract shared code after duplication is real, not hypothetical. Feature-local duplication is acceptable briefly; cross-feature duplication should be reduced once patterns stabilize.
 
 Extract when:
+
 - The same business rule appears in multiple places.
 - The same transform or validation logic appears more than twice.
 - The same string literal appears repeatedly and should become a constant, enum, translation key, or config value.
 - Two functions are structurally identical and differ only by small values or selectors.
 
 Do not extract when:
+
 - The abstraction would hide business meaning.
 - The shared helper name becomes more generic than the duplicated code.
 - The code is only coincidentally similar and likely to diverge soon.
 
 Naming
+
 - Use domain names, not vague names like data, item, helper, or temp.
 - Components: ProjectCard.tsx, CustomerForm.tsx
 - Hooks: useProjectFilters.ts
@@ -76,6 +80,7 @@ Formatting Standard
 Use Prettier for formatting and ESLint for code-quality enforcement. Keep these responsibilities separate to avoid rule conflicts and config churn.
 
 Formatting rules:
+
 - Auto-format on save in the editor.
 - Run lint and format checks in pre-commit or CI.
 - Do not bikeshed style in reviews when the formatter can decide it.

@@ -6,13 +6,13 @@ A pre-validation landing page for collecting early-access emails before you buil
 
 ## What's included
 
-| Section | Purpose |
-|---|---|
-| **Hero** | Headline + email capture form |
-| **Why** | 3-point problem/solution narrative |
-| **Roadmap** | Phase timeline (Shipped / In Progress / Planned) |
-| **FAQ** | Animated accordion |
-| **Footer CTA** | Second email capture |
+| Section        | Purpose                                          |
+| -------------- | ------------------------------------------------ |
+| **Hero**       | Headline + email capture form                    |
+| **Why**        | 3-point problem/solution narrative               |
+| **Roadmap**    | Phase timeline (Shipped / In Progress / Planned) |
+| **FAQ**        | Animated accordion                               |
+| **Footer CTA** | Second email capture                             |
 
 ---
 

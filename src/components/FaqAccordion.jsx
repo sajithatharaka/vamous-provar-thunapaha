@@ -30,47 +30,55 @@ export default function FaqAccordion({ items, accentColor, theme = "dark" }) {
               gap: "1rem",
             }}
           >
-            <span style={{
-              fontFamily: "var(--font-lora), serif",
-              fontSize: "1.05rem",
-              fontWeight: 600,
-              color: questionColor,
-              lineHeight: 1.4,
-            }}>
+            <span
+              style={{
+                fontFamily: "var(--font-lora), serif",
+                fontSize: "1.05rem",
+                fontWeight: 600,
+                color: questionColor,
+                lineHeight: 1.4,
+              }}
+            >
               {item.q}
             </span>
-            <span style={{
-              width: 32,
-              height: 32,
-              borderRadius: "50%",
-              background: openIndex === i ? accentColor : `${accentColor}18`,
-              border: `2px solid ${openIndex === i ? accentColor : `${accentColor}40`}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              fontSize: "1.1rem",
-              color: openIndex === i ? "white" : accentColor,
-              transition: "all 0.25s ease",
-              transform: openIndex === i ? "rotate(45deg)" : "rotate(0deg)",
-            }}>
+            <span
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: "50%",
+                background: openIndex === i ? accentColor : `${accentColor}18`,
+                border: `2px solid ${openIndex === i ? accentColor : `${accentColor}40`}`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+                fontSize: "1.1rem",
+                color: openIndex === i ? "white" : accentColor,
+                transition: "all 0.25s ease",
+                transform: openIndex === i ? "rotate(45deg)" : "rotate(0deg)",
+              }}
+            >
               +
             </span>
           </button>
 
-          <div style={{
-            maxHeight: openIndex === i ? "300px" : "0",
-            overflow: "hidden",
-            transition: "max-height 0.35s cubic-bezier(0.4,0,0.2,1)",
-          }}>
-            <p style={{
-              fontSize: "0.975rem",
-              lineHeight: 1.8,
-              color: answerColor,
-              paddingBottom: "1.5rem",
-              paddingRight: "2.5rem",
-              margin: 0,
-            }}>
+          <div
+            style={{
+              maxHeight: openIndex === i ? "300px" : "0",
+              overflow: "hidden",
+              transition: "max-height 0.35s cubic-bezier(0.4,0,0.2,1)",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.975rem",
+                lineHeight: 1.8,
+                color: answerColor,
+                paddingBottom: "1.5rem",
+                paddingRight: "2.5rem",
+                margin: 0,
+              }}
+            >
               {item.a}
             </p>
           </div>

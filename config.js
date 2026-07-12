@@ -4,16 +4,15 @@
 // ============================================================
 
 export const siteConfig = {
-
   // ── BRAND ──────────────────────────────────────────────────
   brand: {
     name: "TunaPaha",
     tagline: "Sri Lankan culinary experience · Lisbon, Portugal",
     description:
       "Cook Sri Lankan food with your hands. Share stories around the table. Taste spices that traveled centuries to reach Lisbon.",
-    accentColor: "#E8912A",     // Amber Gold — drives CTAs, buttons, hero panel
-    accentDark: "#C4621A",      // Deep Ember — gradient end stop
-    accentMid: "#D4721A",       // Burnt Orange — gradient mid stop
+    accentColor: "#E8912A", // Amber Gold — drives CTAs, buttons, hero panel
+    accentDark: "#C4621A", // Deep Ember — gradient end stop
+    accentMid: "#D4721A", // Burnt Orange — gradient mid stop
     logoEmoji: "🫙",
   },
 
@@ -21,41 +20,50 @@ export const siteConfig = {
   hero: {
     badge: "Cook • Taste • Remember",
     headlineLine1: "Let's taste",
-    headlineLine2: "TunaPaha",          // rendered with gradient text
+    headlineLine2: "TunaPaha", // rendered with gradient text
     description:
       "Cook Sri Lankan food with your hands. Share stories around the table. Taste spices that traveled centuries to reach Lisbon.",
     descriptionEmphasis: "This isn't dinner—it's memory-making.",
     ctaPlaceholder: "your@email.com",
     ctaButton: "Join Waitlist",
-    successMessage: "❤️ Thanks for registering — we'll send you an email shortly!",
+    successMessage:
+      "❤️ Thanks for registering — we'll send you an email shortly!",
     ctaSubline: "First experiences in Lisbon • June 2025",
     socialProofCount: 127,
     socialProofLabel: "food lovers",
-    visualCaption: "Hands preparing hoppers\nover a clay stove.\nThe real thing.",
+    visualCaption:
+      "Hands preparing hoppers\nover a clay stove.\nThe real thing.",
   },
 
   // ── EXPERIENCE STEPS ───────────────────────────────────────
   experience: {
     sectionLabel: "The Experience",
-    subline: "Three hours that turn unfamiliar ingredients into familiar memories.",
+    subline:
+      "Three hours that turn unfamiliar ingredients into familiar memories.",
     steps: [
       {
-        icon: "flame",        // maps to <Flame> from lucide-react
+        icon: "flame", // maps to <Flame> from lucide-react
         title: "Cook Together",
         description:
           "Harshika teaches. You do. Nobody watches from the sidelines—everyone has a job. Grind spices. Fry onions until golden. Feel the heat from the clay pot.",
-        items: ["Kottu roti from scratch", "Fresh-ground pol sambol", "Perfectly spiced dhal"],
-        gradient: "linear-gradient(135deg, #D4A574 0%, rgba(212,165,116,0.7) 100%)",
+        items: [
+          "Kottu roti from scratch",
+          "Fresh-ground pol sambol",
+          "Perfectly spiced dhal",
+        ],
+        gradient:
+          "linear-gradient(135deg, #D4A574 0%, rgba(212,165,116,0.7) 100%)",
         glowColor: "rgba(212,165,116,0.3)",
       },
       {
-        icon: "heart",        // maps to <Heart> from lucide-react
+        icon: "heart", // maps to <Heart> from lucide-react
         title: "Eat What We Made",
         description:
           "Sit. Talk. Eat slowly. This is the part where food gets cold because the stories are too good to stop. Every dish carries a story—from Sri Lanka, from Harshika's family, now yours.",
         quote:
           "TunaPaha means 'three spices'—the foundation of all Sri Lankan cooking. It's the secret Harshika's grandmother never wrote down.",
-        gradient: "linear-gradient(135deg, #2D5016 0%, rgba(45,80,22,0.8) 100%)",
+        gradient:
+          "linear-gradient(135deg, #2D5016 0%, rgba(45,80,22,0.8) 100%)",
         glowColor: "rgba(45,80,22,0.3)",
       },
     ],
@@ -152,9 +160,19 @@ export const siteConfig = {
     subline:
       "Got a question, a private event in mind, or just want to say you love Sri Lankan food? We'd love to hear from you.",
     details: [
-      { icon: "📧", label: "Email",     value: "hello@tunapaha.com",    href: "mailto:hello@tunapaha.com" },
-      { icon: "📱", label: "Instagram", value: "@tunapaha.lisbon",       href: "https://instagram.com/tunapaha.lisbon" },
-      { icon: "📍", label: "Location",  value: "Lisbon, Portugal",       href: null },
+      {
+        icon: "📧",
+        label: "Email",
+        value: "hello@tunapaha.com",
+        href: "mailto:hello@tunapaha.com",
+      },
+      {
+        icon: "📱",
+        label: "Instagram",
+        value: "@tunapaha.lisbon",
+        href: "https://instagram.com/tunapaha.lisbon",
+      },
+      { icon: "📍", label: "Location", value: "Lisbon, Portugal", href: null },
     ],
   },
 
@@ -166,7 +184,8 @@ export const siteConfig = {
     sublineEmphasis: "Unlimited flavors.",
     ctaPlaceholder: "your@email.com",
     ctaButton: "Secure My Spot",
-    successMessage: "❤️ Thanks for registering — we'll send you an email shortly!",
+    successMessage:
+      "❤️ Thanks for registering — we'll send you an email shortly!",
   },
 
   // ── FOOTER ─────────────────────────────────────────────────

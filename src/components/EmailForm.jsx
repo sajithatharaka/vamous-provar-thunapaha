@@ -33,7 +33,9 @@ export default function EmailForm({
     padding: isLg ? "1rem 1.5rem" : "0.75rem 1.25rem",
     fontSize: isLg ? "1rem" : "0.9rem",
     fontFamily: "var(--font-outfit), sans-serif",
-    border: isLight ? "2px solid rgba(42,36,32,0.15)" : "1px solid rgba(255,255,255,0.1)",
+    border: isLight
+      ? "2px solid rgba(42,36,32,0.15)"
+      : "1px solid rgba(255,255,255,0.1)",
     borderRadius: "14px",
     background: isLight ? "white" : "rgba(255,255,255,0.05)",
     color: isLight ? "#2A2420" : "white",
@@ -77,18 +79,20 @@ export default function EmailForm({
 
   if (status === "success") {
     return (
-      <div style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.75rem",
-        padding: "1rem 1.5rem",
-        borderRadius: "14px",
-        border: `2px solid ${accentColor}40`,
-        background: `${accentColor}12`,
-        color: accentColor,
-        fontSize: isLg ? "1rem" : "0.9rem",
-        fontWeight: 600,
-      }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.75rem",
+          padding: "1rem 1.5rem",
+          borderRadius: "14px",
+          border: `2px solid ${accentColor}40`,
+          background: `${accentColor}12`,
+          color: accentColor,
+          fontSize: isLg ? "1rem" : "0.9rem",
+          fontWeight: 600,
+        }}
+      >
         <span>✓</span>
         <span>{successMsg}</span>
       </div>
@@ -113,7 +117,9 @@ export default function EmailForm({
             e.target.style.boxShadow = `0 0 0 3px ${accentColor}18`;
           }}
           onBlur={(e) => {
-            e.target.style.borderColor = isLight ? "rgba(42,36,32,0.15)" : "rgba(255,255,255,0.1)";
+            e.target.style.borderColor = isLight
+              ? "rgba(42,36,32,0.15)"
+              : "rgba(255,255,255,0.1)";
             e.target.style.boxShadow = "none";
           }}
         />
@@ -122,7 +128,8 @@ export default function EmailForm({
           disabled={isPending}
           style={buttonStyle}
           onMouseEnter={(e) => {
-            if (!isPending) e.currentTarget.style.transform = "translateY(-2px)";
+            if (!isPending)
+              e.currentTarget.style.transform = "translateY(-2px)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "translateY(0)";
@@ -132,7 +139,11 @@ export default function EmailForm({
         </button>
       </form>
       {status === "error" && (
-        <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#ef4444" }}>{errorMsg}</p>
+        <p
+          style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#ef4444" }}
+        >
+          {errorMsg}
+        </p>
       )}
     </div>
   );

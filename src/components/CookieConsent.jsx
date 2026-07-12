@@ -10,6 +10,7 @@ export default function CookieConsent() {
 
   useEffect(() => {
     if (!localStorage.getItem(CONSENT_KEY)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage isn't available during SSR/initial render, so this can't move to a lazy useState initializer
       setVisible(true);
     }
   }, []);
@@ -43,7 +44,14 @@ export default function CookieConsent() {
         boxShadow: "0 -8px 24px rgba(0,0,0,0.2)",
       }}
     >
-      <p style={{ margin: 0, fontSize: "0.9rem", lineHeight: 1.6, maxWidth: 640 }}>
+      <p
+        style={{
+          margin: 0,
+          fontSize: "0.9rem",
+          lineHeight: 1.6,
+          maxWidth: 640,
+        }}
+      >
         We use cookies to improve your experience on this site. By continuing to
         browse, you agree to our use of cookies.
       </p>
