@@ -27,7 +27,7 @@ export const siteConfig = {
     descriptionEmphasis: "This isn't dinner—it's memory-making.",
     ctaPlaceholder: "your@email.com",
     ctaButton: "Join Waitlist",
-    successMessage: "❤️ Thank you! We'll be in touch.",
+    successMessage: "❤️ Thanks for registering — we'll send you an email shortly!",
     ctaSubline: "First experiences in Lisbon • June 2025",
     socialProofCount: 127,
     socialProofLabel: "food lovers",
@@ -166,12 +166,12 @@ export const siteConfig = {
     sublineEmphasis: "Unlimited flavors.",
     ctaPlaceholder: "your@email.com",
     ctaButton: "Secure My Spot",
-    successMessage: "❤️ You're on the list! We'll be in touch soon.",
+    successMessage: "❤️ Thanks for registering — we'll send you an email shortly!",
   },
 
   // ── FOOTER ─────────────────────────────────────────────────
   footer: {
-    legal: "© 2025 TunaPaha. All rights reserved.",
+    legal: "TunaPaha. All rights reserved.",
     links: [
       // { label: "Privacy Policy", href: "/privacy" },
       // { label: "Instagram", href: "https://instagram.com/tunapaha.lisbon" },

@@ -22,6 +22,7 @@
 "use server";
 
 import { supabase } from "./supabase";
+import { sendWaitlistEmails } from "./email";
 
 export async function captureEmail(formData) {
   const email = formData.get("email")?.toString().trim().toLowerCase();
@@ -42,6 +43,12 @@ export async function captureEmail(formData) {
     }
     console.error("Supabase insert error:", error.message);
     return { success: false, error: "Something went wrong. Please try again." };
+  }
+
+  try {
+    await sendWaitlistEmails(email);
+  } catch (e) {
+    console.error("Waitlist email send failed:", e);
   }
 
   return { success: true };

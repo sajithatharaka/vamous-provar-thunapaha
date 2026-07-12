@@ -15,6 +15,10 @@ const { brand, hero, experience, host, menu, faq, contact, finalCta, footer } = 
 // ── Icon map ────────────────────────────────────────────────
 const ICONS = { flame: Flame, heart: Heart, chef: ChefHat, users: Users };
 
+function getCurrentYear() {
+  return new Date().getFullYear();
+}
+
 // ── Inline FAQ accordion (TunaPaha style) ───────────────────
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -847,7 +851,12 @@ export default function Page() {
           flexWrap: "wrap", gap: "0.75rem",
           fontSize: "0.8rem", color: "#5A5450",
         }}>
-          <span>{footer.legal}</span>
+          <span>
+            © {getCurrentYear()} {footer.legal} · Designed and Developed by{" "}
+            <a href="https://boomatech.io" target="_blank" rel="noopener" style={{ color: "#5A5450" }}>
+              Booma Tech
+            </a>
+          </span>
           {footer.links.length > 0 && (
             <div style={{ display: "flex", gap: "1.5rem" }}>
               {footer.links.map((link, i) => (

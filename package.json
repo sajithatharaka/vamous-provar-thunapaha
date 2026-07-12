@@ -5,12 +5,23 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "db:push": "npx supabase db push --token $SUPABASE_ACCESS_TOKEN --project-ref $SUPABASE_PROJECT_ID"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
     "lucide-react": "^1.21.0",
     "next": "^16.2.9",
+    "nodemailer": "^9.0.3",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"
   },

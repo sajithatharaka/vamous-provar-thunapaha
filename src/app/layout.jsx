@@ -2,6 +2,7 @@
 import { Lora, Outfit } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "../../config";
+import CookieConsent from "@/components/CookieConsent";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${outfit.variable} ${lora.variable}`}>
       <body style={{ fontFamily: "var(--font-outfit), sans-serif", margin: 0 }}>
         {children}
+        <CookieConsent />
       </body>
     </html>
   );
