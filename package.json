@@ -18,7 +18,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "db:push": "supabase db push --project-ref $SUPABASE_PROJECT_ID"
+    "db:push": "supabase link --project-ref $SUPABASE_PROJECT_ID && supabase db push --linked"
   },
   "lint-staged": {
     "*.{js,jsx}": [
