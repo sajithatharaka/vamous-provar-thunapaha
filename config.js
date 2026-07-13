@@ -6,7 +6,7 @@
 export const siteConfig = {
   // ── BRAND ──────────────────────────────────────────────────
   brand: {
-    name: "TunaPaha",
+    name: "Vamous Provar Thunapaha",
     tagline: "Sri Lankan culinary experience · Lisbon, Portugal",
     description:
       "Cook Sri Lankan food with your hands. Share stories around the table. Taste spices that traveled centuries to reach Lisbon.",
@@ -20,7 +20,7 @@ export const siteConfig = {
   hero: {
     badge: "Cook • Taste • Remember",
     headlineLine1: "Let's taste",
-    headlineLine2: "TunaPaha", // rendered with gradient text
+    headlineLine2: "Thunapaha", // rendered with gradient text
     description:
       "Cook Sri Lankan food with your hands. Share stories around the table. Taste spices that traveled centuries to reach Lisbon.",
     descriptionEmphasis: "This isn't dinner—it's memory-making.",
@@ -163,8 +163,8 @@ export const siteConfig = {
       {
         icon: "📧",
         label: "Email",
-        value: "hello@tunapaha.com",
-        href: "mailto:hello@tunapaha.com",
+        value: "provar-thunapaha@boomatech.io",
+        href: "mailto:provar-thunapaha@boomatech.io",
       },
       {
         icon: "📱",

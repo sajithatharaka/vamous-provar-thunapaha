@@ -53,8 +53,22 @@ export async function sendWelcomeEmail(email) {
     from: process.env.SMTP_FROM,
     to: email,
     subject: `Thanks for joining the ${brandName} waitlist!`,
-    text: `Thanks for registering for ${brandName}! We'll be in touch soon with more details.`,
-    html: `<p>Thanks for registering for <strong>${brandName}</strong>! We'll be in touch soon with more details.</p>`,
+    text: `Dear Explorer,
+
+Thank you so much for registering for the next cooking session – you're now on the waitlist.
+
+I'm finalising the date, time, and menu, and I'll send all the details to everyone on the list in the next few days. As soon as spots are confirmed, you'll be among the first to know and get a direct link to secure your place.
+
+If you have any questions or special dietary requirements in the meantime, just reply to this email and let me know.
+
+Thanks again, and talk soon,
+Harshika
+Vamous Provar`,
+    html: `<p>Dear Explorer,</p>
+<p>Thank you so much for registering for the next cooking session – you're now on the waitlist.</p>
+<p>I'm finalising the date, time, and menu, and I'll send all the details to everyone on the list in the next few days. As soon as spots are confirmed, you'll be among the first to know and get a direct link to secure your place.</p>
+<p>If you have any questions or special dietary requirements in the meantime, just reply to this email and let me know.</p>
+<p>Thanks again, and talk soon,<br>Harshika<br><br>${brandName}!</p>`,
   });
 }
 
