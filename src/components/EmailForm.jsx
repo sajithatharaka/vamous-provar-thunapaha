@@ -1,7 +1,9 @@
 // src/components/EmailForm.jsx
 // Props:
+//   testId       : string — prefix for the input/button data-testids
 //   placeholder  : string
 //   buttonText   : string
+//   buttonVariant: "primary" | "secondary" | "text"  (default "primary")
 //   successMsg   : string
 //   accentColor  : string (hex)
 //   size         : "lg" | "sm"
@@ -11,10 +13,13 @@
 
 import { useState, useTransition } from "react";
 import { captureEmail } from "@/lib/actions";
+import Button from "@/components/Button";
 
 export default function EmailForm({
+  testId,
   placeholder = "Enter your email",
   buttonText = "Join Waitlist",
+  buttonVariant = "primary",
   successMsg = "🎉 You're on the list!",
   accentColor = "#6366f1",
   size = "lg",
@@ -112,6 +117,7 @@ export default function EmailForm({
           placeholder={placeholder}
           disabled={isPending}
           style={inputStyle}
+          data-testid={testId ? `${testId}-email-input` : undefined}
           onFocus={(e) => {
             e.target.style.borderColor = accentColor;
             e.target.style.boxShadow = `0 0 0 3px ${accentColor}18`;
@@ -123,10 +129,12 @@ export default function EmailForm({
             e.target.style.boxShadow = "none";
           }}
         />
-        <button
+        <Button
           type="submit"
+          variant={buttonVariant}
           disabled={isPending}
           style={buttonStyle}
+          data-testid={testId ? `${testId}-submit-button` : undefined}
           onMouseEnter={(e) => {
             if (!isPending)
               e.currentTarget.style.transform = "translateY(-2px)";
@@ -136,7 +144,7 @@ export default function EmailForm({
           }}
         >
           {isPending ? "Joining…" : buttonText}
-        </button>
+        </Button>
       </form>
       {status === "error" && (
         <p

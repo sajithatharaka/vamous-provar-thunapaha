@@ -42,6 +42,7 @@ export default function FaqAccordion({ items, accentColor, theme = "dark" }) {
               {item.q}
             </span>
             <span
+              className={openIndex === i ? "rotate-45" : undefined}
               style={{
                 width: 32,
                 height: 32,
@@ -54,8 +55,7 @@ export default function FaqAccordion({ items, accentColor, theme = "dark" }) {
                 flexShrink: 0,
                 fontSize: "1.1rem",
                 color: openIndex === i ? "white" : accentColor,
-                transition: "all 0.25s ease",
-                transform: openIndex === i ? "rotate(45deg)" : "rotate(0deg)",
+                transition: "transform 0.25s ease",
               }}
             >
               +
