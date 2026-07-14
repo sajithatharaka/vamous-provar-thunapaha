@@ -85,6 +85,7 @@ function FaqItem({ q, a }) {
         }}
       >
         <p
+          className="faq-answer"
           style={{
             fontSize: "1.05rem",
             lineHeight: 1.8,
@@ -107,6 +108,7 @@ function WaitlistForm({
   successMessage,
   dark = false,
   size = "lg",
+  testId,
 }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
@@ -162,6 +164,7 @@ function WaitlistForm({
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
         <input
           type="email"
+          data-testid={`${testId}-email-input`}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={placeholder}
@@ -196,6 +199,7 @@ function WaitlistForm({
         />
         <button
           type="submit"
+          data-testid={`${testId}-submit-button`}
           disabled={status === "loading"}
           style={{
             padding: isLg ? "1.25rem 2.5rem" : "1rem 1.75rem",
@@ -312,6 +316,7 @@ export default function Page() {
         }}
       >
         <div
+          className="nav-inner"
           style={{
             maxWidth: 1200,
             margin: "0 auto",
@@ -319,9 +324,11 @@ export default function Page() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            gap: "1rem",
           }}
         >
           <span
+            className="nav-brand"
             style={{
               fontFamily: "var(--font-lora), serif",
               fontSize: "1.15rem",
@@ -330,13 +337,23 @@ export default function Page() {
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
+              minWidth: 0,
             }}
           >
             <span>{brand.logoEmoji}</span>
-            <span>{brand.name}</span>
+            <span
+              style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {brand.name}
+            </span>
           </span>
           <a
             href="#waitlist"
+            className="nav-cta"
             style={{
               padding: "0.65rem 1.5rem",
               fontSize: "0.875rem",
@@ -346,6 +363,7 @@ export default function Page() {
               borderRadius: "12px",
               textDecoration: "none",
               boxShadow: "0 4px 14px rgba(212,165,116,0.35)",
+              flexShrink: 0,
             }}
           >
             Join Waitlist
@@ -367,6 +385,7 @@ export default function Page() {
       >
         {/* Left */}
         <div
+          className="hero-left"
           style={{
             padding: "8rem 6rem",
             display: "flex",
@@ -474,6 +493,7 @@ export default function Page() {
               placeholder={hero.ctaPlaceholder}
               buttonText={hero.ctaButton}
               successMessage={hero.successMessage}
+              testId="hero-waitlist"
             />
             <p
               style={{
@@ -627,6 +647,7 @@ export default function Page() {
 
       {/* ── EXPERIENCE ── */}
       <section
+        className="section-pad"
         style={{
           padding: "8rem 6rem",
           background: "#FFF5E6",
@@ -692,6 +713,7 @@ export default function Page() {
                   key={animId}
                   id={animId}
                   data-animate
+                  className="experience-card"
                   style={{
                     background: step.gradient,
                     padding: "3rem",
@@ -828,6 +850,7 @@ export default function Page() {
 
       {/* ── HOST / HARSHIKA ── */}
       <section
+        className="section-pad"
         style={{
           padding: "8rem 6rem",
           background:
@@ -896,8 +919,6 @@ export default function Page() {
               boxShadow: "0 32px 100px rgba(180,80,20,0.25)",
               position: "relative",
               overflow: "hidden",
-              transform: `translateY(${scrollY * 0.05}px)`,
-              transition: "transform 0.1s ease-out",
             }}
           >
             <div
@@ -1013,6 +1034,7 @@ export default function Page() {
 
       {/* ── MENU / WHAT WE MAKE ── */}
       <section
+        className="section-pad"
         style={{
           padding: "8rem 6rem",
           background: "#FFFBF5",
@@ -1182,6 +1204,7 @@ export default function Page() {
 
       {/* ── FAQ ── */}
       <section
+        className="section-pad"
         style={{
           padding: "8rem 6rem",
           background: "#FFF5E6",
@@ -1228,6 +1251,7 @@ export default function Page() {
 
       {/* ── CONTACT ── */}
       <section
+        className="section-pad"
         style={{
           padding: "7rem 6rem",
           background: "linear-gradient(135deg, #1A0F0A 0%, #2D5016 100%)",
@@ -1384,12 +1408,21 @@ export default function Page() {
               Send a message
             </h3>
             {[
-              { placeholder: "Your name", type: "text" },
-              { placeholder: "your@email.com", type: "email" },
+              {
+                placeholder: "Your name",
+                type: "text",
+                testId: "contact-name-input",
+              },
+              {
+                placeholder: "your@email.com",
+                type: "email",
+                testId: "contact-email-input",
+              },
             ].map((field) => (
               <input
                 key={field.placeholder}
                 type={field.type}
+                data-testid={field.testId}
                 placeholder={field.placeholder}
                 style={{
                   width: "100%",
@@ -1417,6 +1450,7 @@ export default function Page() {
             ))}
             <textarea
               placeholder="What's on your mind?"
+              data-testid="contact-message-textarea"
               rows={4}
               style={{
                 width: "100%",
@@ -1479,6 +1513,7 @@ export default function Page() {
 
       {/* ── FINAL CTA ── */}
       <section
+        className="final-cta-pad"
         style={{
           padding: "10rem 6rem",
           background:
@@ -1549,12 +1584,14 @@ export default function Page() {
             successMessage={finalCta.successMessage}
             dark
             size="lg"
+            testId="final-cta-waitlist"
           />
         </div>
       </section>
 
       {/* ── FOOTER ── */}
       <footer
+        className="footer-pad"
         style={{
           borderTop: "1px solid rgba(42,36,32,0.08)",
           padding: "1.75rem 6rem",

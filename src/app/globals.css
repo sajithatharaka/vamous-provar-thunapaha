@@ -135,11 +135,54 @@ textarea::placeholder {
   .experience-grid,
   .dish-grid {
     grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
   }
   .contact-grid {
     grid-template-columns: 1fr !important;
   }
   .harshika-grid {
     grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+
+  .nav-inner {
+    padding: 1rem 1.25rem !important;
+  }
+  .hero-left {
+    padding: 5rem 1.5rem 3rem !important;
+  }
+  .section-pad {
+    padding: 4rem 1.5rem !important;
+  }
+  .final-cta-pad {
+    padding: 5rem 1.5rem !important;
+  }
+  .footer-pad {
+    padding: 1.5rem 1.5rem !important;
+  }
+  .experience-card {
+    padding: 2rem !important;
+  }
+  .faq-answer {
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-inner {
+    padding: 0.85rem 1rem !important;
+  }
+  .nav-brand {
+    font-size: 1rem !important;
+  }
+  .nav-cta {
+    padding: 0.55rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+  .hero-left {
+    padding: 4rem 1.25rem 2.5rem !important;
+  }
+  .section-pad {
+    padding: 3rem 1.25rem !important;
   }
 }
