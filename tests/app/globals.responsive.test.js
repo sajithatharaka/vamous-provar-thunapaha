@@ -76,4 +76,25 @@ describe("globals.css responsive breakpoints", () => {
     expect(block).toMatch(/padding:[^;]*!important/);
     expect(block).toMatch(/gap:[^;]*!important/);
   });
+
+  it("keeps the hero visual edge-to-edge (object-fit: cover) and widens the card on mobile, without touching desktop", () => {
+    const block = mediaBlock(css, 768);
+    expect(block).toMatch(
+      /\.hero-visual-image\s*{[^}]*object-fit:\s*cover\s*!important/
+    );
+    expect(block).toMatch(/\.hero-visual-card\s*{[^}]*width:[^;]*!important/);
+
+    // the desktop-only inline styles (object-fit: cover, width: 75%) must
+    // remain untouched outside of this media block
+    const outsideMedia = css.slice(0, css.indexOf("@media"));
+    expect(outsideMedia).not.toMatch(/\.hero-visual-image/);
+    expect(outsideMedia).not.toMatch(/\.hero-visual-card/);
+  });
+
+  it("disables the hero card's scroll-linked parallax on mobile, leaving the image still", () => {
+    const block = mediaBlock(css, 768);
+    expect(block).toMatch(
+      /\.hero-visual-card\s*{[^}]*transform:\s*none\s*!important/
+    );
+  });
 });

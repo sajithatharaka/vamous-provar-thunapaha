@@ -25,7 +25,7 @@ describe("page.jsx responsive className hooks", () => {
   it("marks every heavily-padded section for the section-pad mobile override", () => {
     const matches = source.match(/className="section-pad"/g) ?? [];
     // experience, host/harshika, menu, faq, contact sections
-    expect(matches.length).toBe(5);
+    expect(matches.length).toBe(4);
   });
 
   it("marks the hero left column, final CTA, and footer for their own mobile overrides", () => {

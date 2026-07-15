@@ -47,12 +47,33 @@ describe("hero visual image slideshow", () => {
     );
   });
 
-  it("gives the right visual panel the same flat background as the left hero column, not the amber gradient", () => {
+  it("blends the hero background across the section instead of two separate column colors", () => {
+    const heroOpen = source.slice(
+      source.indexOf('className="hero-grid"'),
+      source.indexOf("{/* Left */}")
+    );
+    expect(heroOpen).toMatch(/background:\s*\n\s*"linear-gradient\(/);
+
+    const leftColumn = source.slice(
+      source.indexOf("{/* Left */}"),
+      source.indexOf("{/* Right: amber visual panel */}")
+    );
+    expect(leftColumn).not.toContain('background: "#FFF9F0"');
+
     const rightPanel = source.slice(
       source.indexOf("{/* Right: amber visual panel */}"),
       source.indexOf("{/* Glass card */}")
     );
-    expect(rightPanel).toContain('background: "#FFF9F0"');
+    expect(rightPanel).not.toContain('background: "#FFF9F0"');
     expect(rightPanel).not.toContain("brand.accentColor");
+  });
+
+  it("gives the glass card and its images className hooks for mobile-only CSS overrides", () => {
+    const heroSection = source.slice(
+      source.indexOf("{/* Right: amber visual panel */}"),
+      source.indexOf("{/* ── EXPERIENCE ── */}")
+    );
+    expect(heroSection).toMatch(/className="hero-visual-card"/);
+    expect(heroSection).toMatch(/className="hero-visual-image"/);
   });
 });

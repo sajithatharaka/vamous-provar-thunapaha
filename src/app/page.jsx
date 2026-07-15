@@ -27,6 +27,13 @@ function getCurrentYear() {
   return new Date().getFullYear();
 }
 
+function getCurrentMonthYear() {
+  return new Date().toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
+}
+
 // ── Inline FAQ accordion (TunaPaha style) ───────────────────
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -391,6 +398,8 @@ export default function Page() {
           position: "relative",
           overflow: "hidden",
           zIndex: 1,
+          background:
+            "linear-gradient(120deg, #FFF9F0 0%, #FFF9F0 42%, #FFF3DC 60%, #FFE9C2 78%, #FFDFA8 100%)",
         }}
       >
         {/* Left */}
@@ -402,7 +411,6 @@ export default function Page() {
             flexDirection: "column",
             justifyContent: "center",
             position: "relative",
-            background: "#FFF9F0",
           }}
         >
           {/* Floating particles */}
@@ -517,7 +525,7 @@ export default function Page() {
               }}
             >
               <Star size={14} style={{ color: "#D4A574", fill: "#D4A574" }} />
-              {hero.ctaSubline}
+              {hero.ctaSubline} • {getCurrentMonthYear()}
             </p>
           </div>
 
@@ -531,29 +539,10 @@ export default function Page() {
               animation: "fade-in 1s ease-out 0.9s both",
             }}
           >
-            <div style={{ display: "flex" }}>
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  style={{
-                    width: 52,
-                    height: 52,
-                    borderRadius: "50%",
-                    background:
-                      "linear-gradient(135deg, #D4A574 0%, #2D5016 100%)",
-                    border: "4px solid #FFFBF5",
-                    marginLeft: i > 1 ? "-16px" : 0,
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                    animation: `bounce-in 0.6s ease-out ${i * 0.1}s both`,
-                  }}
-                />
-              ))}
-            </div>
             <p
               style={{ fontSize: "0.95rem", color: "#5D3A3A", fontWeight: 600 }}
             >
-              Join <strong>{hero.socialProofCount}</strong>{" "}
-              {hero.socialProofLabel}
+              <strong>{hero.socialProofCount}</strong> {hero.socialProofLabel}
             </p>
           </div>
         </div>
@@ -562,7 +551,6 @@ export default function Page() {
         <div
           style={{
             position: "relative",
-            background: "#FFF9F0",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -574,8 +562,8 @@ export default function Page() {
               position: "absolute",
               inset: 0,
               background: `
-              radial-gradient(circle at 25% 35%, rgba(255,200,100,0.25) 0%, transparent 55%),
-              radial-gradient(circle at 75% 65%, rgba(180,80,20,0.3) 0%, transparent 55%)
+              radial-gradient(circle at 25% 35%, rgba(255,200,100,0.18) 0%, transparent 55%),
+              radial-gradient(circle at 75% 65%, rgba(180,80,20,0.22) 0%, transparent 55%)
             `,
               animation: "mesh-move 8s ease-in-out infinite",
             }}
@@ -607,6 +595,7 @@ export default function Page() {
 
           {/* Glass card */}
           <div
+            className="hero-visual-card"
             style={{
               width: "75%",
               aspectRatio: "3/4",
@@ -646,6 +635,7 @@ export default function Page() {
                   alt={hero.visualCaption.replace(/\n/g, " ")}
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
+                  className="hero-visual-image"
                   style={{
                     objectFit: "cover",
                     opacity: i === heroImageIndex ? 1 : 0,
@@ -1328,268 +1318,6 @@ export default function Page() {
           {faq.items.map((item, i) => (
             <FaqItem key={i} q={item.q} a={item.a} />
           ))}
-        </div>
-      </section>
-
-      {/* ── CONTACT ── */}
-      <section
-        className="section-pad"
-        style={{
-          padding: "7rem 6rem",
-          background: "linear-gradient(135deg, #1A0F0A 0%, #2D5016 100%)",
-          position: "relative",
-          zIndex: 1,
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: -80,
-            left: "10%",
-            width: 350,
-            height: 350,
-            background: "radial-gradient(circle, #E8912A 0%, transparent 70%)",
-            opacity: 0.1,
-            borderRadius: "50%",
-            animation: "float-rotate 14s ease-in-out infinite",
-            pointerEvents: "none",
-          }}
-        />
-
-        <div
-          id="contact"
-          data-animate
-          className="contact-grid"
-          style={{
-            maxWidth: 1100,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1.2fr 1fr",
-            gap: "5rem",
-            alignItems: "start",
-            opacity: visible["contact"] ? 1 : 0,
-            transform: visible["contact"]
-              ? "translateY(0)"
-              : "translateY(40px)",
-            transition: "all 0.9s ease",
-          }}
-        >
-          {/* Left */}
-          <div style={{ color: "white" }}>
-            <h2
-              style={{
-                fontFamily: "var(--font-lora), serif",
-                fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                fontWeight: 700,
-                lineHeight: 1.2,
-                marginBottom: "1.25rem",
-              }}
-            >
-              {contact.headline}
-            </h2>
-            <p
-              style={{
-                fontSize: "1.15rem",
-                lineHeight: 1.8,
-                opacity: 0.85,
-                marginBottom: "3rem",
-                maxWidth: 480,
-              }}
-            >
-              {contact.subline}
-            </p>
-            {contact.details.map((item) => (
-              <div
-                key={item.label}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1.25rem",
-                  marginBottom: "1.75rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: 52,
-                    height: 52,
-                    background: "rgba(232,145,42,0.2)",
-                    border: "2px solid rgba(232,145,42,0.4)",
-                    borderRadius: 16,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "1.4rem",
-                    flexShrink: 0,
-                  }}
-                >
-                  {item.icon}
-                </div>
-                <div>
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      opacity: 0.55,
-                      fontWeight: 600,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      marginBottom: "0.2rem",
-                    }}
-                  >
-                    {item.label}
-                  </p>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      style={{
-                        fontSize: "1.05rem",
-                        color: "#FFD878",
-                        fontWeight: 600,
-                        textDecoration: "none",
-                      }}
-                      onMouseEnter={(e) => (e.target.style.opacity = "0.75")}
-                      onMouseLeave={(e) => (e.target.style.opacity = "1")}
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <p
-                      style={{
-                        fontSize: "1.05rem",
-                        color: "rgba(255,255,255,0.9)",
-                        fontWeight: 500,
-                      }}
-                    >
-                      {item.value}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Right: contact form */}
-          <div
-            style={{
-              background: "rgba(255,255,255,0.07)",
-              backdropFilter: "blur(16px)",
-              border: "2px solid rgba(255,255,255,0.12)",
-              borderRadius: 28,
-              padding: "2.5rem",
-            }}
-          >
-            <h3
-              style={{
-                fontFamily: "var(--font-lora), serif",
-                fontSize: "1.5rem",
-                fontWeight: 700,
-                color: "white",
-                marginBottom: "2rem",
-              }}
-            >
-              Send a message
-            </h3>
-            {[
-              {
-                placeholder: "Your name",
-                type: "text",
-                testId: "contact-name-input",
-              },
-              {
-                placeholder: "your@email.com",
-                type: "email",
-                testId: "contact-email-input",
-              },
-            ].map((field) => (
-              <input
-                key={field.placeholder}
-                type={field.type}
-                data-testid={field.testId}
-                placeholder={field.placeholder}
-                style={{
-                  width: "100%",
-                  padding: "1rem 1.25rem",
-                  fontSize: "1rem",
-                  border: "2px solid rgba(255,255,255,0.15)",
-                  borderRadius: 14,
-                  background: "rgba(255,255,255,0.08)",
-                  color: "white",
-                  outline: "none",
-                  marginBottom: "1rem",
-                  display: "block",
-                  fontFamily: "var(--font-outfit), sans-serif",
-                  transition: "all 0.3s ease",
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "#E8912A";
-                  e.target.style.background = "rgba(255,255,255,0.12)";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "rgba(255,255,255,0.15)";
-                  e.target.style.background = "rgba(255,255,255,0.08)";
-                }}
-              />
-            ))}
-            <textarea
-              placeholder="What's on your mind?"
-              data-testid="contact-message-textarea"
-              rows={4}
-              style={{
-                width: "100%",
-                padding: "1rem 1.25rem",
-                fontSize: "1rem",
-                border: "2px solid rgba(255,255,255,0.15)",
-                borderRadius: 14,
-                background: "rgba(255,255,255,0.08)",
-                color: "white",
-                outline: "none",
-                marginBottom: "1.5rem",
-                resize: "vertical",
-                display: "block",
-                fontFamily: "var(--font-outfit), sans-serif",
-                transition: "all 0.3s ease",
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = "#E8912A";
-                e.target.style.background = "rgba(255,255,255,0.12)";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "rgba(255,255,255,0.15)";
-                e.target.style.background = "rgba(255,255,255,0.08)";
-              }}
-            />
-            <button
-              style={{
-                width: "100%",
-                padding: "1.1rem",
-                fontSize: "1.05rem",
-                fontWeight: 700,
-                background: "linear-gradient(135deg, #E8912A 0%, #C4621A 100%)",
-                color: "white",
-                border: "none",
-                borderRadius: 14,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                boxShadow: "0 8px 24px rgba(232,145,42,0.35)",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.boxShadow =
-                  "0 16px 40px rgba(232,145,42,0.5)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow =
-                  "0 8px 24px rgba(232,145,42,0.35)";
-              }}
-            >
-              Send Message <ArrowRight size={18} />
-            </button>
-          </div>
         </div>
       </section>
 

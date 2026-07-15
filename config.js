@@ -28,9 +28,7 @@ export const siteConfig = {
     ctaButton: "Join Waitlist",
     successMessage:
       "❤️ Thanks for registering — we'll send you an email shortly!",
-    ctaSubline: "First experiences in Lisbon • June 2025",
-    socialProofCount: 127,
-    socialProofLabel: "food lovers",
+    ctaSubline: "Next experience in Lisbon",
     visualCaption: "",
     images: [
       "/images/slide-image.jpg",

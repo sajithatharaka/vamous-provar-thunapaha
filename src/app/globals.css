@@ -132,6 +132,13 @@ textarea::placeholder {
   .hero-grid > div:last-child {
     min-height: 340px;
   }
+  .hero-visual-card {
+    width: 92% !important;
+    transform: none !important;
+  }
+  .hero-visual-image {
+    object-fit: cover !important;
+  }
   .experience-grid,
   .dish-grid {
     grid-template-columns: 1fr !important;
