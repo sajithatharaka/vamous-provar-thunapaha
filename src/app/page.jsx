@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "../../config";
 import { captureEmail } from "@/lib/actions";
+import Image from "next/image";
 
 const { brand, hero, experience, host, menu, faq, contact, finalCta, footer } =
   siteConfig;
@@ -251,6 +252,15 @@ export default function Page() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
   const [visible, setVisible] = useState({});
+  const [heroImageIndex, setHeroImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (!hero.images || hero.images.length < 2) return;
+    const id = setInterval(() => {
+      setHeroImageIndex((i) => (i + 1) % hero.images.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -552,7 +562,7 @@ export default function Page() {
         <div
           style={{
             position: "relative",
-            background: `linear-gradient(160deg, ${brand.accentColor} 0%, ${brand.accentMid} 40%, ${brand.accentDark} 100%)`,
+            background: "#FFF9F0",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -600,9 +610,18 @@ export default function Page() {
             style={{
               width: "75%",
               aspectRatio: "3/4",
-              background: "rgba(255,255,255,0.15)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
+              background:
+                hero.images && hero.images.length > 0
+                  ? undefined
+                  : "rgba(255,255,255,0.15)",
+              backdropFilter:
+                hero.images && hero.images.length > 0
+                  ? undefined
+                  : "blur(20px)",
+              WebkitBackdropFilter:
+                hero.images && hero.images.length > 0
+                  ? undefined
+                  : "blur(20px)",
               borderRadius: 32,
               border: "3px solid rgba(255,255,255,0.3)",
               display: "flex",
@@ -612,26 +631,60 @@ export default function Page() {
               gap: "1.5rem",
               padding: "3rem",
               position: "relative",
+              overflow: "hidden",
               transform: `translateY(${scrollY * 0.15}px)`,
               transition: "transform 0.1s ease-out",
               boxShadow: "0 32px 80px rgba(0,0,0,0.3)",
               animation: "fade-in 1.2s ease-out",
             }}
           >
-            <ChefHat
-              size={72}
-              style={{
-                color: "rgba(255,255,255,0.5)",
-                animation: "float 3s ease-in-out infinite",
-              }}
-            />
+            {hero.images && hero.images.length > 0 ? (
+              hero.images.map((src, i) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt={hero.visualCaption.replace(/\n/g, " ")}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  style={{
+                    objectFit: "cover",
+                    opacity: i === heroImageIndex ? 1 : 0,
+                    transition: "opacity 1.5s ease-in-out",
+                  }}
+                  data-testid={`hero-visual-image-${i}`}
+                  priority={i === 0}
+                />
+              ))
+            ) : (
+              <ChefHat
+                size={72}
+                style={{
+                  color: "rgba(255,255,255,0.5)",
+                  animation: "float 3s ease-in-out infinite",
+                }}
+              />
+            )}
             <p
               style={{
-                color: "rgba(255,255,255,0.7)",
+                color: "rgba(255,255,255,0.9)",
                 textAlign: "center",
                 fontSize: "0.95rem",
                 fontStyle: "italic",
                 lineHeight: 1.6,
+                position:
+                  hero.images && hero.images.length > 0 ? "absolute" : "static",
+                bottom:
+                  hero.images && hero.images.length > 0 ? "2rem" : undefined,
+                left: hero.images && hero.images.length > 0 ? "50%" : undefined,
+                transform:
+                  hero.images && hero.images.length > 0
+                    ? "translateX(-50%)"
+                    : undefined,
+                textShadow:
+                  hero.images && hero.images.length > 0
+                    ? "0 2px 12px rgba(0,0,0,0.6)"
+                    : undefined,
+                zIndex: 1,
               }}
             >
               {hero.visualCaption.split("\n").map((line, i) => (
@@ -905,12 +958,13 @@ export default function Page() {
             transition: "all 1s cubic-bezier(0.4,0,0.2,1)",
           }}
         >
-          {/* Portrait placeholder */}
+          {/* Portrait */}
           <div
             style={{
               aspectRatio: "3/4",
-              background:
-                "linear-gradient(160deg, #E8912A 0%, #D4721A 40%, #C4621A 100%)",
+              background: host.image
+                ? undefined
+                : "linear-gradient(160deg, #E8912A 0%, #D4721A 40%, #C4621A 100%)",
               borderRadius: 32,
               display: "flex",
               alignItems: "center",
@@ -921,46 +975,59 @@ export default function Page() {
               overflow: "hidden",
             }}
           >
-            <div
-              style={{
-                position: "absolute",
-                top: "-30%",
-                right: "-30%",
-                width: 200,
-                height: 200,
-                background: "rgba(255,230,150,0.35)",
-                borderRadius: "50%",
-                animation: "float 6s ease-in-out infinite",
-              }}
-            />
-            <ChefHat
-              size={80}
-              style={{
-                color: "rgba(255,255,255,0.5)",
-                filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
-              }}
-            />
-            <p
-              style={{
-                position: "absolute",
-                bottom: "2.5rem",
-                left: "50%",
-                transform: "translateX(-50%)",
-                color: "rgba(255,255,255,0.85)",
-                fontSize: "0.9rem",
-                fontStyle: "italic",
-                textAlign: "center",
-                fontWeight: 500,
-                whiteSpace: "nowrap",
-              }}
-            >
-              {host.portraitPlaceholder.split("\n").map((l, i) => (
-                <span key={i}>
-                  {l}
-                  {i === 0 && <br />}
-                </span>
-              ))}
-            </p>
+            {host.image ? (
+              <Image
+                src={host.image}
+                alt={host.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                style={{ objectFit: "cover" }}
+                data-testid="host-portrait-image"
+              />
+            ) : (
+              <>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "-30%",
+                    right: "-30%",
+                    width: 200,
+                    height: 200,
+                    background: "rgba(255,230,150,0.35)",
+                    borderRadius: "50%",
+                    animation: "float 6s ease-in-out infinite",
+                  }}
+                />
+                <ChefHat
+                  size={80}
+                  style={{
+                    color: "rgba(255,255,255,0.5)",
+                    filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
+                  }}
+                />
+                <p
+                  style={{
+                    position: "absolute",
+                    bottom: "2.5rem",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: "0.9rem",
+                    fontStyle: "italic",
+                    textAlign: "center",
+                    fontWeight: 500,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {host.portraitPlaceholder.split("\n").map((l, i) => (
+                    <span key={i}>
+                      {l}
+                      {i === 0 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </>
+            )}
           </div>
 
           {/* Bio */}
@@ -1125,7 +1192,9 @@ export default function Page() {
                     style={{
                       width: "100%",
                       height: 220,
-                      background: `linear-gradient(135deg, ${dish.accent}40 0%, ${dish.accent}20 100%)`,
+                      background: dish.image
+                        ? undefined
+                        : `linear-gradient(135deg, ${dish.accent}40 0%, ${dish.accent}20 100%)`,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -1134,35 +1203,48 @@ export default function Page() {
                       overflow: "hidden",
                     }}
                   >
-                    <div
-                      style={{
-                        position: "absolute",
-                        bottom: -20,
-                        right: -20,
-                        width: 100,
-                        height: 100,
-                        background: `${dish.accent}18`,
-                        borderRadius: "50%",
-                      }}
-                    />
-                    {dish.emoji}
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "1rem",
-                        right: "1rem",
-                        background: "rgba(255,255,255,0.7)",
-                        backdropFilter: "blur(8px)",
-                        padding: "0.4rem 0.9rem",
-                        borderRadius: "999px",
-                        fontSize: "0.75rem",
-                        fontWeight: 600,
-                        color: dish.accent,
-                        border: `1px solid ${dish.accent}30`,
-                      }}
-                    >
-                      Add image ↑
-                    </div>
+                    {dish.image ? (
+                      <Image
+                        src={dish.image}
+                        alt={dish.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        style={{ objectFit: "cover" }}
+                        data-testid={`dish-image-${idx}`}
+                      />
+                    ) : (
+                      <>
+                        <div
+                          style={{
+                            position: "absolute",
+                            bottom: -20,
+                            right: -20,
+                            width: 100,
+                            height: 100,
+                            background: `${dish.accent}18`,
+                            borderRadius: "50%",
+                          }}
+                        />
+                        {dish.emoji}
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "1rem",
+                            right: "1rem",
+                            background: "rgba(255,255,255,0.7)",
+                            backdropFilter: "blur(8px)",
+                            padding: "0.4rem 0.9rem",
+                            borderRadius: "999px",
+                            fontSize: "0.75rem",
+                            fontWeight: 600,
+                            color: dish.accent,
+                            border: `1px solid ${dish.accent}30`,
+                          }}
+                        >
+                          Add image ↑
+                        </div>
+                      </>
+                    )}
                   </div>
                   <div style={{ padding: "2rem 2.25rem 2.5rem" }}>
                     <div
@@ -1517,7 +1599,7 @@ export default function Page() {
         style={{
           padding: "10rem 6rem",
           background:
-            "radial-gradient(circle at 50% 50%, #D4A574 0%, #2D5016 100%)",
+            "radial-gradient(circle at 50% 50%, #D4A574 0%, #8B2E1A 100%)",
           color: "white",
           textAlign: "center",
           position: "relative",

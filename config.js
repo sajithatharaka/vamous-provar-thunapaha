@@ -31,8 +31,15 @@ export const siteConfig = {
     ctaSubline: "First experiences in Lisbon • June 2025",
     socialProofCount: 127,
     socialProofLabel: "food lovers",
-    visualCaption:
-      "Hands preparing hoppers\nover a clay stove.\nThe real thing.",
+    visualCaption: "",
+    images: [
+      "/images/slide-image.jpg",
+      "/images/slide-image-1.jpg",
+      "/images/slide-image-2.jpg",
+      "/images/slide-image-3.jpg",
+      "/images/slide-image-4.jpg",
+      "/images/slide-image-5.jpg",
+    ],
   },
 
   // ── EXPERIENCE STEPS ───────────────────────────────────────
@@ -47,7 +54,7 @@ export const siteConfig = {
         description:
           "Harshika teaches. You do. Nobody watches from the sidelines—everyone has a job. Grind spices. Fry onions until golden. Feel the heat from the clay pot.",
         items: [
-          "Kottu roti from scratch",
+          "New year sweets",
           "Fresh-ground pol sambol",
           "Perfectly spiced dhal",
         ],
@@ -72,6 +79,7 @@ export const siteConfig = {
   // ── HOST / PRESENTER ───────────────────────────────────────
   host: {
     badge: "The Cook",
+    image: "/images/meet-harshika.jpeg",
     name: "Meet Harshika",
     bio: [
       "She's not a trained chef. She's a researcher. Someone who spent years recreating grandmother's recipes from memory, testing temperatures, asking questions the cookbooks don't answer.",
@@ -89,14 +97,16 @@ export const siteConfig = {
     dishes: [
       {
         emoji: "🥘",
-        title: "Kottu Roti",
+        image: "/images/kokiss-yellow.png",
+        title: "Kokiss",
         description:
-          "Shredded flatbread stir-fried with spices, vegetables, egg and your choice of protein. Loud, messy, utterly Sri Lankan.",
+          "Crispy, deep-fried rice flour cookies, traditionally made during festive occasions in Sri Lanka.",
         accent: "#E8912A",
         bg: "linear-gradient(135deg, #FFF3DC 0%, #FFE5B0 100%)",
       },
       {
         emoji: "🥥",
+        image: "/images/pol-sambol.png",
         title: "Pol Sambol",
         description:
           "Fresh coconut ground with red onion, chilli and lime. The condiment that goes on everything—and makes everything better.",
@@ -105,6 +115,7 @@ export const siteConfig = {
       },
       {
         emoji: "🍛",
+        image: "/images/dhal-curry.jpg",
         title: "Dhal Curry",
         description:
           "Red lentils slow-cooked with turmeric, mustard seeds, curry leaves and coconut milk. Grandmother's weekly ritual.",
@@ -113,9 +124,28 @@ export const siteConfig = {
       },
       {
         emoji: "🫙",
+        image: "/images/thuna-paha.jpeg",
         title: "TunaPaha Spice Blend",
         description:
           "The homemade three-spice blend at the heart of it all. You'll grind it yourself, and take the recipe home.",
+        accent: "#5D3A3A",
+        bg: "linear-gradient(135deg, #F7F0EE 0%, #EDD8D0 100%)",
+      },
+      {
+        emoji: "🫙",
+        image: "/images/string-hoppers.jpeg",
+        title: "String Hoppers",
+        description:
+          "Steamed rice flour noodles, traditionally served with coconut sambol and curry. A staple of Sri Lankan cuisine.",
+        accent: "#5D3A3A",
+        bg: "linear-gradient(135deg, #F7F0EE 0%, #EDD8D0 100%)",
+      },
+      {
+        emoji: "🫙",
+        image: "/images/rotti.png",
+        title: "Pol Rotti",
+        description:
+          "Sri Lankan flatbread made from grated coconut and rice flour, typically served with curry.",
         accent: "#5D3A3A",
         bg: "linear-gradient(135deg, #F7F0EE 0%, #EDD8D0 100%)",
       },
