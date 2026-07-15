@@ -6,7 +6,7 @@
 export const siteConfig = {
   // ── BRAND ──────────────────────────────────────────────────
   brand: {
-    name: "Vamous Provar Thunapaha",
+    name: "Vamos Provar Thunapaha",
     tagline: "Sri Lankan culinary experience · Lisbon, Portugal",
     description:
       "Cook Sri Lankan food with your hands. Share stories around the table. Taste spices that traveled centuries to reach Lisbon.",
@@ -22,8 +22,8 @@ export const siteConfig = {
     headlineLine1: "Let's taste",
     headlineLine2: "Thunapaha", // rendered with gradient text
     description:
-      "Cook Sri Lankan food with your hands. Share stories around the table. Taste spices that traveled centuries to reach Lisbon.",
-    descriptionEmphasis: "This isn't dinner—it's memory-making.",
+      "Cook Authentic Sri Lankan food with your hands. Share stories around the table. Taste spices that traveled centuries to reach Lisbon.",
+    descriptionEmphasis: "This isn't just a meal, it's memory-making.",
     ctaPlaceholder: "your@email.com",
     ctaButton: "Join Waitlist",
     successMessage:
@@ -66,7 +66,7 @@ export const siteConfig = {
         description:
           "Sit. Talk. Eat slowly. This is the part where food gets cold because the stories are too good to stop. Every dish carries a story—from Sri Lanka, from Harshika's family, now yours.",
         quote:
-          "TunaPaha means 'three spices'—the foundation of all Sri Lankan cooking. It's the secret Harshika's grandmother never wrote down.",
+          "TunaPaha means 'five spices'—the foundation of all Sri Lankan cooking. It's the secret Harshika's grandmother never wrote down.",
         gradient:
           "linear-gradient(135deg, #2D5016 0%, rgba(45,80,22,0.8) 100%)",
         glowColor: "rgba(45,80,22,0.3)",
@@ -81,10 +81,10 @@ export const siteConfig = {
     name: "Meet Harshika",
     bio: [
       "She's not a trained chef. She's a researcher. Someone who spent years recreating grandmother's recipes from memory, testing temperatures, asking questions the cookbooks don't answer.",
-      "Born in Colombo. Now in Lisbon. Bringing home flavors to Portuguese tables—not as a restaurant, but as an experience. As shared memory.",
+      "Born in a charming coastal town in Sri Lanka. Now in Lisbon. Bringing home flavors to Portuguese tables—not as a restaurant, but as an experience. As shared memory.",
     ],
     quote:
-      "When you eat with your hands, food tastes different. More truthful. That's how we're meant to eat kottu.",
+      "When you eat with your hands, food tastes different. More truthful. That's how we're meant to eat rice & curry.",
     portraitPlaceholder: "Harshika portrait\ncoming soon",
   },
 
@@ -125,7 +125,7 @@ export const siteConfig = {
         image: "/images/thuna-paha.jpeg",
         title: "TunaPaha Spice Blend",
         description:
-          "The homemade three-spice blend at the heart of it all. You'll grind it yourself, and take the recipe home.",
+          "The homemade five-spice blend at the heart of it all. You'll grind it yourself, and take the recipe home.",
         accent: "#5D3A3A",
         bg: "linear-gradient(135deg, #F7F0EE 0%, #EDD8D0 100%)",
       },
@@ -143,8 +143,8 @@ export const siteConfig = {
         image: "/images/rotti.png",
         title: "Pol Rotti",
         description:
-          "Sri Lankan flatbread made from grated coconut and rice flour, typically served with curry.",
-        accent: "#5D3A3A",
+          "Sri Lankan flatbread made from grated coconut and wheat flour, typically served with curry.",
+        accent: "#ebd5d5",
         bg: "linear-gradient(135deg, #F7F0EE 0%, #EDD8D0 100%)",
       },
     ],
@@ -161,7 +161,7 @@ export const siteConfig = {
       },
       {
         q: "How many people per session?",
-        a: "We keep it small and intimate—maximum 8 guests per experience. This isn't a cooking class; it's a dinner party where you help make the food.",
+        a: "We keep it small and intimate—minimum 6 guests per experience. This isn't a cooking class; it's a dinner party where you help make the food.",
       },
       {
         q: "What does the experience include?",
@@ -176,8 +176,8 @@ export const siteConfig = {
         a: "In Lisbon. Exact location is shared with confirmed guests. We're working on a permanent home—for now, it's an intimate pop-up setting.",
       },
       {
-        q: "When is the first experience?",
-        a: "We're targeting June 2025. Join the waitlist to be first in line—waitlist members get priority booking and an early-bird rate.",
+        q: "When is the next experience?",
+        a: "We're targeting {{monthYear}}. Join the waitlist to be first in line—waitlist members get priority booking and an early-bird rate.",
       },
     ],
   },
@@ -208,7 +208,7 @@ export const siteConfig = {
   finalCta: {
     headline: "Ready to cook together?",
     subline:
-      "Join the waitlist. First experiences happen in June. Limited seats.",
+      "Join the waitlist. Next experiences happen in {{month}}. Limited seats.",
     sublineEmphasis: "Unlimited flavors.",
     ctaPlaceholder: "your@email.com",
     ctaButton: "Secure My Spot",

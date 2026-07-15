@@ -34,6 +34,18 @@ function getCurrentMonthYear() {
   });
 }
 
+function getCurrentMonth() {
+  return new Date().toLocaleDateString("en-US", { month: "long" });
+}
+
+// Fills the "{{monthYear}}" / "{{month}}" tokens config.js copy may contain,
+// so month/year references stay current instead of being hard-coded.
+function withCurrentDate(text) {
+  return text
+    .replace("{{monthYear}}", getCurrentMonthYear())
+    .replace("{{month}}", getCurrentMonth());
+}
+
 // ── Inline FAQ accordion (TunaPaha style) ───────────────────
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -498,6 +510,7 @@ export default function Page() {
           >
             {hero.description}{" "}
             <strong style={{ color: "#5D3A3A" }}>
+              <br />
               {hero.descriptionEmphasis}
             </strong>
           </p>
@@ -1316,7 +1329,7 @@ export default function Page() {
             </p>
           </div>
           {faq.items.map((item, i) => (
-            <FaqItem key={i} q={item.q} a={item.a} />
+            <FaqItem key={i} q={item.q} a={withCurrentDate(item.a)} />
           ))}
         </div>
       </section>
@@ -1386,7 +1399,8 @@ export default function Page() {
               opacity: 0.95,
             }}
           >
-            {finalCta.subline} <strong>{finalCta.sublineEmphasis}</strong>
+            {withCurrentDate(finalCta.subline)}{" "}
+            <strong>{finalCta.sublineEmphasis}</strong>
           </p>
           <WaitlistForm
             placeholder={finalCta.ctaPlaceholder}

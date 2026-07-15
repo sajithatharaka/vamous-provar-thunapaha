@@ -63,7 +63,7 @@ If you have any questions or special dietary requirements in the meantime, just 
 
 Thanks again, and talk soon,
 Harshika
-Vamous Provar`,
+Vamos Provar`,
     html: `<p>Dear Explorer,</p>
 <p>Thank you so much for registering for the next cooking session – you're now on the waitlist.</p>
 <p>I'm finalising the date, time, and menu, and I'll send all the details to everyone on the list in the next few days. As soon as spots are confirmed, you'll be among the first to know and get a direct link to secure your place.</p>

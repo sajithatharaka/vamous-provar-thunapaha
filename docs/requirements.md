@@ -11,3 +11,4 @@ This is the index of requirement documents. Each entry links to a page-scoped or
 | [2026-07-15-menu-dish-photos.md](./requirements/2026-07-15-menu-dish-photos.md)                           | Menu tiles render real dish photos from `public/images/` instead of emoji placeholders             |
 | [2026-07-15-hero-cta-subline-dynamic-date.md](./requirements/2026-07-15-hero-cta-subline-dynamic-date.md) | Hero CTA subline month/year is computed at runtime instead of hard-coded in `config.js`            |
 | [2026-07-15-hero-background-blend.md](./requirements/2026-07-15-hero-background-blend.md)                 | Hero section background blended into one continuous gradient instead of two separate column colors |
+| [2026-07-15-faq-finalcta-dynamic-date.md](./requirements/2026-07-15-faq-finalcta-dynamic-date.md)         | FAQ answer and final CTA subline month references computed at runtime instead of hard-coded "June" |
